@@ -1,22 +1,19 @@
-// Define budget as a global variable
-let budget;
-
-// Add event listener to the confirmation button
-const confirmBtn = document.getElementById("confirm-btn");
-confirmBtn.addEventListener("click", confirmChoices);
-
 // Function to handle confirmation of choices
 function confirmChoices() {
     console.log("Button clicked"); // Log to check if function is called
-    // Get selected market sector, budget, profit target, and loss target
+    // Get selected market sector, budget, profit target percentage, and loss target percentage
     const sectorDropdown = document.getElementById("sector-dropdown");
     const selectedSector = sectorDropdown.value;
     const budgetInput = document.getElementById("budget");
-    budget = parseFloat(budgetInput.value);
+    const budget = parseFloat(budgetInput.value);
     const profitTargetInput = document.getElementById("profit-target");
-    const profitTarget = parseFloat(profitTargetInput.value);
+    const profitTargetPercentage = parseFloat(profitTargetInput.value);
     const lossTargetInput = document.getElementById("loss-target");
-    const lossTarget = parseFloat(lossTargetInput.value);
+    const lossTargetPercentage = parseFloat(lossTargetInput.value);
+
+    // Calculate profit and loss targets based on percentages
+    const profitTarget = budget * (profitTargetPercentage / 100);
+    const lossTarget = budget * (lossTargetPercentage / 100);
 
     // Call function to calculate investment allocations
     const investmentAllocations = calculateInvestmentAllocations(selectedSector, budget, profitTarget, lossTarget);
