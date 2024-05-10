@@ -1,3 +1,6 @@
+// Define budget as a global variable
+let budget;
+
 // Add event listener to the confirmation button
 const confirmBtn = document.getElementById("confirm-btn");
 confirmBtn.addEventListener("click", confirmChoices);
@@ -9,7 +12,7 @@ function confirmChoices() {
     const sectorDropdown = document.getElementById("sector-dropdown");
     const selectedSector = sectorDropdown.value;
     const budgetInput = document.getElementById("budget");
-    const budget = parseFloat(budgetInput.value);
+    budget = parseFloat(budgetInput.value);
 
     // Call function to calculate investment allocations
     const investmentAllocations = calculateInvestmentAllocations(selectedSector, budget);
