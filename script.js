@@ -24,7 +24,7 @@ function confirmChoices() {
     console.log("Investment allocations:", investmentAllocations); // Log allocations
 
     // Display investment allocations on the webpage
-    displayResults(investmentAllocations, budget);
+    displayResults(investmentAllocations, budget, profitTarget, lossTarget);
 }
 
 // Function to calculate investment allocations
@@ -98,7 +98,7 @@ function calculateInvestmentAllocations(sector, budget, profitTarget, lossTarget
 }
 
 // Function to display investment allocations on the webpage
-function displayResults(investmentAllocations, budget) {
+function displayResults(investmentAllocations, budget, profitTarget, lossTarget) {
     const stockList = document.getElementById("stock-list");
     // Clear previous results
     stockList.innerHTML = "";
@@ -106,7 +106,9 @@ function displayResults(investmentAllocations, budget) {
     investmentAllocations.forEach(allocation => {
         const listItem = document.createElement("li");
         const percentage = ((allocation.investment / budget) * 100).toFixed(2);
-        listItem.textContent = `${allocation.company}: $${allocation.investment.toFixed(2)} (${percentage}%)`;
+        const profitTargetPrice = (profitTarget * (allocation.investment / budget)).toFixed(2);
+        const lossTargetPrice = (lossTarget * (allocation.investment / budget)).toFixed(2);
+        listItem.textContent = `${allocation.company}: $${allocation.investment.toFixed(2)} | Profit Target: $${profitTargetPrice} | Loss Target: $${lossTargetPrice}`;
         stockList.appendChild(listItem);
     });
 }
