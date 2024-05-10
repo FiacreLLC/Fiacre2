@@ -4,8 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Investment Simulator</title>
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Stock Investment Simulator</h1>
+    </header>
+    <main>
+        <section id="sector-selection">
+            <h2>Select Sector</h2>
+            <select id="sector-dropdown">
+                <option value="technology">Technology</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="finance">Finance</option>
+                <!-- Add more options for different sectors -->
+            </select>
+        </section>
+        <section id="budget-input">
+            <h2>Enter Budget</h2>
+            <input type="number" id="budget" placeholder="Enter budget in USD">
+        </section>
+        <section id="results">
+            <h2>Investment Allocation</h2>
+            <ul id="stock-list">
+                <!-- Results will be dynamically populated here -->
+            </ul>
+        </section>
+    </main>
     <!-- Link to your external JavaScript file -->
     <script src="script.js"></script>
 </body>
