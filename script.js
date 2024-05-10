@@ -1,3 +1,7 @@
+// Add event listener to the confirmation button
+const confirmBtn = document.getElementById("confirm-btn");
+confirmBtn.addEventListener("click", confirmChoices);
+
 // Function to handle confirmation of choices
 function confirmChoices() {
     console.log("Button clicked"); // Log to check if function is called
