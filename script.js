@@ -24,17 +24,59 @@ function confirmChoices() {
 
 // Function to calculate investment allocations
 function calculateInvestmentAllocations(sector, budget) {
-    // Your code to calculate investment allocations based on sector and budget
-    // This function should return an array of objects containing company names and their allocated percentages
-    // For demonstration purposes, let's assume we have some sample allocations
-    const sampleAllocations = [
-        { company: "Company A", investment: budget * 0.25 },
-        { company: "Company B", investment: budget * 0.20 },
-        { company: "Company C", investment: budget * 0.15 },
-        { company: "Company D", investment: budget * 0.30 },
-        { company: "Company E", investment: budget * 0.10 }
+    // Define lists of companies for each sector
+    const technologyCompanies = [
+        "Apple Inc.",
+        "Microsoft Corporation",
+        "Alphabet Inc. (Google)",
+        "Amazon.com Inc.",
+        "Facebook Inc."
+        // Add more technology companies as needed
     ];
-    return sampleAllocations;
+
+    const healthcareCompanies = [
+        "Johnson & Johnson",
+        "Pfizer Inc.",
+        "Merck & Co. Inc.",
+        "UnitedHealth Group Inc.",
+        "Abbott Laboratories"
+        // Add more healthcare companies as needed
+    ];
+
+    const financeCompanies = [
+        "JPMorgan Chase & Co.",
+        "Bank of America Corporation",
+        "Wells Fargo & Company",
+        "Visa Inc.",
+        "Mastercard Incorporated"
+        // Add more finance companies as needed
+    ];
+
+    let companies;
+    switch (sector) {
+        case "technology":
+            companies = technologyCompanies;
+            break;
+        case "healthcare":
+            companies = healthcareCompanies;
+            break;
+        case "finance":
+            companies = financeCompanies;
+            break;
+        default:
+            companies = [];
+    }
+
+    // Calculate investment allocations
+    const numCompanies = companies.length;
+    const allocations = [];
+    for (let i = 0; i < numCompanies; i++) {
+        const randomPercentage = Math.random() * 100;
+        const roundedPercentage = Math.round(randomPercentage * 100) / 100;
+        const investmentAmount = (budget * roundedPercentage) / 100;
+        allocations.push({ company: companies[i], investment: investmentAmount });
+    }
+    return allocations;
 }
 
 // Function to display investment allocations on the webpage
