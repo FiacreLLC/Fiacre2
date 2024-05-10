@@ -24,7 +24,7 @@ function confirmChoices() {
     console.log("Investment allocations:", investmentAllocations); // Log allocations
 
     // Display investment allocations on the webpage
-    displayResults(investmentAllocations);
+    displayResults(investmentAllocations, budget);
 }
 
 // Function to calculate investment allocations
@@ -98,14 +98,15 @@ function calculateInvestmentAllocations(sector, budget, profitTarget, lossTarget
 }
 
 // Function to display investment allocations on the webpage
-function displayResults(investmentAllocations) {
+function displayResults(investmentAllocations, budget) {
     const stockList = document.getElementById("stock-list");
     // Clear previous results
     stockList.innerHTML = "";
     // Display new results
     investmentAllocations.forEach(allocation => {
         const listItem = document.createElement("li");
-        listItem.textContent = `${allocation.company}: $${allocation.investment.toFixed(2)}`;
+        const percentage = ((allocation.investment / budget) * 100).toFixed(2);
+        listItem.textContent = `${allocation.company}: $${allocation.investment.toFixed(2)} (${percentage}%)`;
         stockList.appendChild(listItem);
     });
 }
