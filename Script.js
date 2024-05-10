@@ -1,43 +1,46 @@
-// Define a list of companies in the materials sector
-const materialsCompanies = [
-    "Company A",
-    "Company B",
-    "Company C",
-    "Company D",
-    "Company E"
-    // Add more companies as needed
-];
+// Add event listener to the confirmation button
+const confirmBtn = document.getElementById("confirm-btn");
+confirmBtn.addEventListener("click", confirmChoices);
 
-// Function to simulate random investment allocation
-function simulateInvestment(budget, numCompanies) {
-    // Calculate total budget available for allocation
-    const totalBudget = parseFloat(budget);
-    
-    // Initialize an empty array to store investment allocations
-    const allocations = [];
+// Function to handle confirmation of choices
+function confirmChoices() {
+    // Get selected market sector and budget
+    const sectorDropdown = document.getElementById("sector-dropdown");
+    const selectedSector = sectorDropdown.value;
+    const budgetInput = document.getElementById("budget");
+    const budget = parseFloat(budgetInput.value);
 
-    // Generate random percentages for each company
-    for (let i = 0; i < numCompanies; i++) {
-        // Generate a random percentage between 0 and 100
-        const randomPercentage = Math.random() * 100;
-        // Round the percentage to two decimal places
-        const roundedPercentage = Math.round(randomPercentage * 100) / 100;
-        // Calculate the investment amount based on the percentage
-        const investmentAmount = (totalBudget * roundedPercentage) / 100;
-        // Add the company and its investment amount to the allocations array
-        allocations.push({ company: materialsCompanies[i], investment: investmentAmount });
-    }
+    // Call function to calculate investment allocations
+    const investmentAllocations = calculateInvestmentAllocations(selectedSector, budget);
 
-    return allocations;
+    // Display investment allocations on the webpage
+    displayResults(investmentAllocations);
 }
 
-// Example usage:
-const budget = prompt("Enter your budget for investment:");
-const numCompanies = materialsCompanies.length;
-const investmentAllocations = simulateInvestment(budget, numCompanies);
+// Function to calculate investment allocations
+function calculateInvestmentAllocations(sector, budget) {
+    // Your code to calculate investment allocations based on sector and budget
+    // This function should return an array of objects containing company names and their allocated percentages
+    // For demonstration purposes, let's assume we have some sample allocations
+    const sampleAllocations = [
+        { company: "Company A", investment: budget * 0.25 },
+        { company: "Company B", investment: budget * 0.20 },
+        { company: "Company C", investment: budget * 0.15 },
+        { company: "Company D", investment: budget * 0.30 },
+        { company: "Company E", investment: budget * 0.10 }
+    ];
+    return sampleAllocations;
+}
 
-// Display the investment allocations
-console.log("Investment Allocations:");
-investmentAllocations.forEach(allocation => {
-    console.log(`${allocation.company}: $${allocation.investment.toFixed(2)}`);
-});
+// Function to display investment allocations on the webpage
+function displayResults(investmentAllocations) {
+    const stockList = document.getElementById("stock-list");
+    // Clear previous results
+    stockList.innerHTML = "";
+    // Display new results
+    investmentAllocations.forEach(allocation => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${allocation.company}: $${allocation.investment.toFixed(2)}`;
+        stockList.appendChild(listItem);
+    });
+}
