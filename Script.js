@@ -40,7 +40,8 @@ function displayResults(investmentAllocations) {
     // Display new results
     investmentAllocations.forEach(allocation => {
         const listItem = document.createElement("li");
-        listItem.textContent = `${allocation.company}: $${allocation.investment.toFixed(2)}`;
+        const percentage = ((allocation.investment / budget) * 100).toFixed(2);
+        listItem.textContent = `${allocation.company}: $${allocation.investment.toFixed(2)} (${percentage}%)`;
         stockList.appendChild(listItem);
     });
 }
