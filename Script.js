@@ -4,6 +4,7 @@ confirmBtn.addEventListener("click", confirmChoices);
 
 // Function to handle confirmation of choices
 function confirmChoices() {
+    console.log("Button clicked"); // Log to check if function is called
     // Get selected market sector and budget
     const sectorDropdown = document.getElementById("sector-dropdown");
     const selectedSector = sectorDropdown.value;
@@ -12,6 +13,7 @@ function confirmChoices() {
 
     // Call function to calculate investment allocations
     const investmentAllocations = calculateInvestmentAllocations(selectedSector, budget);
+    console.log("Investment allocations:", investmentAllocations); // Log allocations
 
     // Display investment allocations on the webpage
     displayResults(investmentAllocations);
