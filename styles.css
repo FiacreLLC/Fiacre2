@@ -91,3 +91,11 @@ button:hover {
 #stock-list li span {
     font-weight: bold;
 }
+
+/* Logo styles */
+.logo {
+    position: fixed;
+    bottom: 20px; /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+}
