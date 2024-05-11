@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Investment Simulator</title>
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -16,6 +18,7 @@
                 <option value="technology">Technology</option>
                 <option value="healthcare">Healthcare</option>
                 <option value="finance">Finance</option>
+                <!-- Add more options for different sectors -->
             </select>
         </section>
         <section id="budget-input">
@@ -30,16 +33,15 @@
             <h2>Enter Loss Target (%)</h2>
             <input type="number" id="loss-target" placeholder="Enter loss target percentage">
         </section>
-        <section id="confirm-button">
-            <button id="confirm-btn">Confirm Choices</button>
-        </section>
         <section id="results">
             <h2>Investment Allocation</h2>
             <ul id="stock-list">
                 <!-- Results will be dynamically populated here -->
             </ul>
         </section>
+        <button id="confirm-btn">Confirm Choices</button>
     </main>
+    <!-- Link to your external JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
