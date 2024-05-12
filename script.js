@@ -29,11 +29,11 @@ function calculateInvestmentAllocations(sector, budget) {
     // This function should return an array of objects containing company names and their allocated amounts
     // For demonstration purposes, let's assume we have some sample allocations
     const sampleAllocations = [
-        { company: "Company A", investment: budget * 0.25 },
-        { company: "Company B", investment: budget * 0.20 },
-        { company: "Company C", investment: budget * 0.15 },
-        { company: "Company D", investment: budget * 0.30 },
-        { company: "Company E", investment: budget * 0.10 }
+        { company: "Apple Inc.", investment: budget * 0.25 },
+        { company: "Microsoft Corporation", investment: budget * 0.20 },
+        { company: "Amazon.com Inc.", investment: budget * 0.15 },
+        { company: "Alphabet Inc. (Google)", investment: budget * 0.30 },
+        { company: "Facebook Inc.", investment: budget * 0.10 }
     ];
     return sampleAllocations;
 }
@@ -53,4 +53,13 @@ function displayResults(investmentAllocations, budget, profitTarget, lossTarget)
         listItem.textContent = `${allocation.company}: $${allocation.investment.toFixed(2)} (${percentage.toFixed(2)}%)`;
         stockList.appendChild(listItem);
     });
+
+    // Add profit target and loss target to the results section
+    const resultsSection = document.getElementById("results");
+    const profitTargetDisplay = document.createElement("p");
+    profitTargetDisplay.textContent = `Profit Target: ${profitTarget}%`;
+    resultsSection.appendChild(profitTargetDisplay);
+    const lossTargetDisplay = document.createElement("p");
+    lossTargetDisplay.textContent = `Loss Target: ${lossTarget}%`;
+    resultsSection.appendChild(lossTargetDisplay);
 }
