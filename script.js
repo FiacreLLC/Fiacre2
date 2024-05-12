@@ -51,15 +51,10 @@ function displayResults(investmentAllocations, budget, profitTarget, lossTarget)
         // Calculate percentage of investment for each company
         const percentage = (allocation.investment / totalInvestment) * 100;
         listItem.textContent = `${allocation.company}: $${allocation.investment.toFixed(2)} (${percentage.toFixed(2)}%)`;
+        // Add profit target and loss target to the list item
+        const profitTargetAmount = (allocation.investment * profitTarget / 100).toFixed(2);
+        const lossTargetAmount = (allocation.investment * lossTarget / 100).toFixed(2);
+        listItem.innerHTML += `<br>Profit Target: $${profitTargetAmount}<br>Loss Target: $${lossTargetAmount}`;
         stockList.appendChild(listItem);
     });
-
-    // Add profit target and loss target to the results section
-    const resultsSection = document.getElementById("results");
-    const profitTargetDisplay = document.createElement("p");
-    profitTargetDisplay.textContent = `Profit Target: ${profitTarget}%`;
-    resultsSection.appendChild(profitTargetDisplay);
-    const lossTargetDisplay = document.createElement("p");
-    lossTargetDisplay.textContent = `Loss Target: ${lossTarget}%`;
-    resultsSection.appendChild(lossTargetDisplay);
 }
